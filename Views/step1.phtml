@@ -1,0 +1,49 @@
+<?php require('template/header.phtml');
+//error_reporting(0);
+?>
+<header id="step1">STEP 1 OUT OF 3: Please select your bridge.</header>
+<script type="text/javascript" src="../js/jshue.js"></script>
+<script type="text/javascript" id="discovery">
+    var hue = jsHue();
+    hue.discover().then(bridges => {
+        if(bridges.length === 0) {
+        console.log('No bridges found. :(');
+           var content = document.createElement('a');
+           content.className = 'button';
+            var span = document.createElement('span');
+            span.textContent = "No bridge found ;(";
+            content.appendChild(span);
+           var src = document.getElementById('discovery');
+           src.parentNode.insertBefore(content, src);
+        }
+    else {
+        bridges.forEach(b =>{
+                var a = document.createElement('a');
+                a.className = 'button';
+                var ip = b.internalipaddress;
+                var queryString = "?" + ip;
+                a.setAttribute("href", "../step2.php" + queryString);
+                var span = document.createElement('span');
+                span.textContent = b.internalipaddress;
+                a.appendChild(span);
+                var src = document.getElementById('discovery');
+                src.parentNode.insertBefore(a, src);
+            });
+    }
+    }).catch(e => console.log('Error finding bridges', e));
+    //                                              __
+    //                                             |__|
+    //    ___       ___      ____        ______     __     __      __
+    //    \  \     /  /     /    \      |  __  \   |  |   |  \    /  |
+    //     \  \   /  /     / /_\  \     |  |  \ \  |  |   |   \  /   |
+    //      \  \ /  /     /   __   \    |  |  / /  |  |   |    \/    |
+    //       \     /     /   /  \   \   |  |_/ /   |  |   |  |\  /|  |
+    //        \___/     /___/    \___\  |_____/    |__|   |__| \/ |__| (,Anestis and Mathew)
+</script>
+<a class="button" href="../index.php" id="home">
+    <span >
+        Home
+    </span>
+</a>
+
+</body>

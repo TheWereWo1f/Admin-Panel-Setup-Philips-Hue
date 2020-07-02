@@ -1,0 +1,53 @@
+<?php require_once ('template/header.phtml') ?>
+<body class="admin">
+<header id="mainHeader">Admin panel</header>
+<header id="colourPick">Please choose your colours:</header>
+<form method="post" action="../index.php">
+    <header id="tempHeader">Average Temperature:</header>
+    <div class="btn-group btn-group-vertical" data-toggle="buttons" id="temperatureSetting">
+        <label class="btn btn-secondary" id="labels">
+            <input type="radio" name="option" id="temp" value="temperature_range_1" autocomplete="off" required="required"> 18-24
+        </label>
+        <label class="btn btn-secondary" id="labels">
+            <input type="radio" name="option" id="temp" value="temperature_range_2" autocomplete="off" required="required"> 15-23
+        </label>
+        <label class="btn btn-secondary" id="labels">
+            <input type="radio" name="option" id="temp" value="temperature_range_3" autocomplete="off" required="required"> 19-25
+        </label>
+        <label class="btn btn-secondary" id="labels">
+            <input type="radio" name="option" id="temp" value="temperature_range_4" autocomplete="off" required="required"> 16-26
+        </label>
+    </div>
+    <header id="Min">Low range scale:</header>
+<div class="btn-group btn-group-vertical" data-toggle="buttons" id="minColourOption" >
+    <label class="btn btn-secondary-red" id="labels">
+        <input type="radio" name="option1" id="Red" value="Red" autocomplete="off" required="required"> Red
+    </label>
+    <label class="btn btn-secondary-yellow" id="labels">
+        <input type="radio" name="option1" id="Yellow" value="Yellow" autocomplete="off" required="required"> Yellow
+    </label>
+    <label class="btn btn-secondary-Green" id="labels">
+        <input type="radio" name="option1" id="Green" value="Green" autocomplete="off" required="required"> Green
+    </label>
+    <label class="btn btn-secondary-Blue" id="labels">
+        <input type="radio" name="option1" id="Blue" value="Blue" autocomplete="off" required="required"> Blue
+    </label>
+</div>
+<header id="Max">High range scale: </header>
+<div class="btn-group btn-group-vertical" data-toggle="buttons" id="maxColourOption">
+    <label class="btn btn-secondary-red" id="labels">
+        <input type="radio" name="option2" id="Red" value="Red" autocomplete="off" required="required"> Red
+    </label>
+    <label class="btn btn-secondary-yellow" id="labels">
+        <input type="radio" name="option2" id="Yellow" value="Yellow" autocomplete="off" required="required"> Yellow
+    </label>
+    <label class="btn btn-secondary-Green" id="labels">
+        <input type="radio" name="option2" id="Green" value="Green" autocomplete="off" required="required"> Green
+    </label>
+    <label class="btn btn-secondary-Blue" id="labels">
+        <input type="radio" name="option2" id="Blue" value="Blue" autocomplete="off" required="required"> Blue
+    </label>
+    <input class="btn btn-success" type="submit" name="Save" id="submit">
+</form>
+</div>
+</body>

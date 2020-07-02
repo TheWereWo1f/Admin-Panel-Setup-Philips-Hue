@@ -1,0 +1,61 @@
+<?php
+require_once 'template/header.phtml';
+?>
+<main id="main">
+<header class="pb-5" id="step1">STEP 3 OUT OF 3: Please select a bulb.</header>
+<script type="text/javascript" src="../js/jshue.js"></script>
+    <div class="container" id="test">
+<script type="text/javascript" id="discovery">
+    var string = decodeURIComponent(window.location.search);
+    string = string.substring(1);
+    var strings = string.split("&");
+    for(var i = 0; i < strings.length; i++)
+    {
+        var ip = strings[0];
+        var username = strings[1];
+    }
+
+    var url = "http://"+ip+"/api/"+username+"/lights/";
+    var xhttp = new XMLHttpRequest();
+    console.log(url);
+    xhttp.open("GET", url, false);
+    xhttp.setRequestHeader("Content-type", "application/json");
+    xhttp.send();
+
+    var res = JSON.parse(xhttp.responseText);
+    console.log(res);
+    var count = Object.keys(res).length;
+    console.log(count);
+    console.log(res[1]['name']);
+
+    for(var a = 1; a <= count; a++)
+    {
+        var div2 = document.createElement('div');
+        div2.id = a;
+        div2.className = "row pb-5";
+        var b = document.createElement('a');
+        b.className = 'btn-lg btn-success';
+        b.id = 'buttons';
+        var queryString = "?ip=" + ip + "&username=" + username + "&id=" + a;
+        b.setAttribute("href", "../confirmation.php" + queryString);
+        var span = document.createElement('span');
+        span.id = 'span';
+        span.textContent = res[a]['name'];
+        b.appendChild(span);
+        document.getElementById("test").appendChild(div2);
+        document.getElementById(a).appendChild(b);
+    }
+
+    }
+</script>
+    </div>
+    <a class="button" href="../step1.php" id="step2btn">
+    <span >
+        Back
+    </span>
+    </a>
+    <a class="button" href="../index.php" id="home" style="margin-top: -150px">
+    <span >
+        Home
+    </span>
+    </a>

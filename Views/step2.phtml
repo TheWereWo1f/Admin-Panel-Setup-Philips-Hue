@@ -1,0 +1,50 @@
+<?php require_once 'template/header.phtml' ?>
+<header id="step1">STEP 2 OUT OF 3: Please create a user.</header>
+<img src="../images/Bridge.jpeg" style="margin-left: 45%; margin-top: 30px;">
+<p style="color: white; margin-left: 30%; margin-top: 30px">
+    In to order to complete this step press the create user button and press the button on to the bridge.
+</p>
+<a class="button" style="float: right; position:relative; margin-right:79%; margin-top: -165px;" onclick="setIP();">
+    <span>Create user</span>
+</a>
+<script type="text/javascript" src="../js/jshue.js"></script>
+
+<script type="text/javascript" id="discovery">
+
+      function setIP(){
+          var hue = jsHue();
+          var ip = decodeURIComponent(window.location.search);
+          ip = ip.substring(1);
+             var bridge = hue.bridge(ip); // here we pass the ip that have been selected
+
+             // create user account (requires link button to be pressed)
+             bridge.createUser('myApp#testdevice').then(data => {
+            // extract bridge-generated username from returned data
+            var username = data[0].success.username;
+
+            console.log('New username:', username);
+
+            // instantiate user object with username
+
+            var user = bridge.user(username);
+            console.log(user);
+            if(user != null){
+                var string = "?" + ip + "&" + username;
+                window.location.href = "step3.php" + string;
+            }
+            //if()
+            // console.log(user);
+        });
+
+    }
+</script>
+<a class="button" href="../step1.php" id="step2btn">
+    <span >
+        Back
+    </span>
+    <a class="button" href="../index.php" id="home" style="margin-top: -150px">
+    <span >
+        Home
+    </span>
+    </a>
+</a>

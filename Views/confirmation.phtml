@@ -1,0 +1,39 @@
+<?php require_once 'template/header.phtml';
+error_reporting(0);
+?>
+<header id="step1">Please confirm all of the details below.</header>
+
+<form method="post" action="<?php $_SERVER['PHP_SELF'];?>">
+
+<script type="text/javascript" src="../js/jshue.js"></script>
+
+<script type="text/javascript" id="discovery">
+    var string = decodeURIComponent(window.location.search);
+    string = string.substring(1);
+    var strings = string.split("&");
+    for(var i = 0; i < strings.length; i++)
+    {
+        var ip = strings[0];
+        var username = strings[1];
+        var bulbid = strings[2];
+    }
+
+    var info = document.createElement('p');
+    info.textContent = "Your bridge is: " +ip+" Your username is: " + username + " and you have selected bulb: " + bulbid;
+    info.style.color = "white";
+    info.style.marginLeft = "300px";
+    var src = document.getElementById('discovery');
+    src.parentNode.insertBefore(info,src);
+    </script>
+    <a class="button" href="../step3.php" id="step2btn" style="float: left; position: relative; margin-left: -2%">
+        <span>
+            Back
+        </span>
+    </a>
+    <input class="btn btn-success" type="submit" value="Confirm" name="Confirm" style="margin-right: 44%; margin-top: 40px; float:right; width: 100px; height: 70px">
+</form>
+<a class="button" href="../index.php" id="home" style="margin-top: -150px">
+    <span >
+        Home
+    </span>
+</a>
